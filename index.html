@@ -112,27 +112,25 @@
                 </div>
             </div>
 
-            <div class="main-box rounded-2xl bg-white row-span-1 md:h-auto h-[800px] p-8 order-last md:row-span-3 md:col-span-1 md:order-none">
+            <div class="main-box-history rounded-2xl bg-white row-span-1 md:h-auto h-[800px] p-8 order-last md:row-span-3 md:col-span-1 md:order-none">
+
                 <div class="flex justify-between items-center mb-6">
                     <div class="history flex justify-normal items-center">
                     <span class="text-[30px]">
-                        <i class="fa-regular fa-clock"></i>
+                        <i class="fa-regular fa-clock text-[#5C5C5C]"></i>
                     </span>
                     <h1 class="text-[24px] font-semibold ml-1">Call History</h1>
                     </div>
-                    <div class="clear-btn w-[115px] h-[52px] bg-[#00A63E] rounded-full flex justify-center items-center"><button class="text[22px] font-bold text-white">Clear</button>
+                    <div id="clear-btn" class="w-[115px] h-[52px] bg-[#00A63E] rounded-full flex justify-center items-center"><button class="text[22px] font-bold text-white">Clear</button>
                     </div>
                 </div>
 
-                <div class="flex justify-between items-center bg-[#F2F2F2] p-4 rounded-2xl">
-                    <div>
-                        <h1 class="text-[18px] font-semibold">Fire Service Number</h1>
-                        <p class="text-[18px] text-[#5C5C5C]">999</p>
-                    </div>
-                    <div>
-                        <p>11:36:58 AM</p>
-                    </div>
+                <div id="full-history-data">
+
+                    <div class="single-history"></div>
+
                 </div>
+
             </div>
 
             <div class="main-box rounded-2xl bg-white p-8">
