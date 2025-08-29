@@ -21,7 +21,7 @@ const allRemainingCoins = document.getElementById('all-rcoins');
 document.querySelectorAll('.btn-call').forEach(callingBtn => {
   callingBtn.addEventListener('click', () => {
     if (callCoins < 20) {
-      alert('Not enough coins!');
+      alert('You do not have enough coins! Must need 20 coins');
       return;
     }
 
@@ -29,9 +29,10 @@ document.querySelectorAll('.btn-call').forEach(callingBtn => {
     allRemainingCoins.textContent = callCoins;
 
     const mainBoxCard = callingBtn.closest('.main-box');
-    const n = mainBoxCard.querySelector('span').textContent.trim();
+    const serviceCode = mainBoxCard.querySelector('span').textContent.trim();
+    const serviceName = mainBoxCard.querySelector('h1').textContent.trim();
 
-    alert(`Calling ${n}`);
+    alert(`Calling ${serviceName} ${serviceCode}`);
   });
 });
 
@@ -106,7 +107,7 @@ function copyBtnCopy() {
 
       navigator.clipboard.writeText(number)
         .then(() => {
-          alert(`${number} is copied`);
+          alert(`Number is coppied: ${number}`);
         })
     });
   });
