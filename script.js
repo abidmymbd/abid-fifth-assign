@@ -17,55 +17,44 @@ lifeHeart.forEach(heart => {
 let callCoins = 100; 
 
 const allRemainingCoins = document.getElementById('all-rcoins');
+const callHistoryContainer = document.getElementById('full-history-data');
 
-document.querySelectorAll('.btn-call').forEach(callingBtn => {
-  callingBtn.addEventListener('click', () => {
+document.querySelectorAll('.btn-call').forEach(button => {
+  button.addEventListener('click', () => {
+    
     if (callCoins < 20) {
       alert('You do not have enough coins! Must need 20 coins');
       return;
     }
 
-    callCoins -= 20; 
+    callCoins -= 20;
     allRemainingCoins.textContent = callCoins;
 
-    const mainBoxCard = callingBtn.closest('.main-box');
-    const serviceCode = mainBoxCard.querySelector('span').textContent.trim();
-    const serviceName = mainBoxCard.querySelector('h1').textContent.trim();
+ 
+    const card = button.closest('.main-box');
+    const serviceName = card.querySelector('h1').innerText;
+    const serviceCode = card.querySelector('span').innerText;
 
+ 
     alert(`Calling ${serviceName} ${serviceCode}`);
+
+  
+    const realTime = new Date().toLocaleTimeString();
+    const historyItem = document.createElement('div');
+    historyItem.className = 'single-history';
+    historyItem.innerHTML = `
+      <div class="flex justify-between items-center bg-[#F2F2F2] p-4 rounded-2xl mb-3">
+        <div>
+          <h1 class="text-[18px] font-semibold">${serviceName}</h1>
+          <p class="text-[18px] text-[#5C5C5C]">${serviceCode}</p>
+        </div>
+        <div>
+          <p>${realTime}</p>
+        </div>
+      </div>
+    `;
+    callHistoryContainer.appendChild(historyItem);
   });
-});
-
-
-// //// Call History And Clear Button //
-
-const callHistoryButtons = document.querySelectorAll('.btn-call');
-const callHistoryContainer = document.getElementById('full-history-data');
-
-callHistoryButtons.forEach(callHistoryButton => {
-    callHistoryButton.addEventListener('click', () => {
-
-        const HistoryCard = callHistoryButton.closest('.main-box'); 
-        const serviceName = HistoryCard.querySelector('h1').innerText;
-        const callNumber = HistoryCard.querySelector('span').innerText;
-        const realTime = new Date().toLocaleTimeString();
-
-        const addNewHistoryItem = document.createElement('div');
-        addNewHistoryItem.className = 'single-history';
-        addNewHistoryItem.innerHTML = `
-            <div class="flex justify-between items-center bg-[#F2F2F2] p-4 rounded-2xl mb-3">
-                <div>
-                  <h1 class="text-[18px] font-semibold">${serviceName}</h1>
-                  <p class="text-[18px] text-[#5C5C5C]">${callNumber}</p>
-                </div>
-                <div>
-                  <p>${realTime}</p>
-                </div>
-            </div>
-        `;
-
-        callHistoryContainer.appendChild(addNewHistoryItem);
-    });
 });
 
 
