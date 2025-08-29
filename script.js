@@ -45,3 +45,29 @@ function copyBtnCopy() {
   });
 }
 copyBtnCopy();
+
+
+///////////// Call Button Part  //////////////
+
+let callCoins = 100; 
+
+const allRemainingCoins = document.getElementById('all-rcoins');
+
+document.querySelectorAll('.btn-call').forEach(callingBtn => {
+  callingBtn.addEventListener('click', () => {
+    if (callCoins < 20) {
+      alert('Not enough coins!');
+      return;
+    }
+
+    callCoins -= 20; 
+    allRemainingCoins.textContent = callCoins;
+
+    const mainBoxCard = callingBtn.closest('.main-box');
+    const n = mainBoxCard.querySelector('span').textContent.trim();
+
+    alert(`Calling ${n}`);
+  });
+});
+
+
